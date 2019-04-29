@@ -1,0 +1,31 @@
+---
+title: "Generating fake data"
+author: "Anqi Dai"
+date: "4/28/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r}
+#https://rdrr.io/cran/ssizeRNA/man/sim.counts.html
+#This function simulates count data from Negative-Binomial distribution for two-sample RNA-seq experiments with given mean, dispersion and fold change. A count data matrix is generated.
+install.packages('ssizeRNA')
+library(ssizeRNA)
+```
+
+```{r}
+# use the example code
+m <- 3                    ## sample size per treatment group
+mu <- 10                  ## mean counts in control group for all genes 
+disp <- 0.1               ## dispersion for all genes
+fc <- 2                   ## 2-fold change for DE genes
+
+sim <- sim.counts(m = m, mu = mu, disp = disp, fc = fc)
+dat <- sim$counts                ## count data matrix
+
+
+```
+
